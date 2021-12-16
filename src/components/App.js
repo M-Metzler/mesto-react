@@ -9,7 +9,7 @@ function App() {
         <div className="page__content">
           <Header />
           <Main />
-          <Footer />
+        <Footer />
         </div>
 
         <div class="popup popup_type_profile">
