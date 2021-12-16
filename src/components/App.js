@@ -25,6 +25,12 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
+
   return (
     <div className='page'>
       <div className="page__content">
@@ -38,12 +44,15 @@ function App() {
       </div>
       <PopupEditProfile
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupEditAvatar
-      isOpen={isEditAvatarPopupOpen}
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupAddCard
-      isOpen={isAddPlacePopupOpen}
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       />
 
       {/* <template class="card-template">

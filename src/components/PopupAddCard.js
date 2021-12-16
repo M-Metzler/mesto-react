@@ -1,9 +1,9 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function PopupAddCard({isOpen}) {
+function PopupAddCard({isOpen, onClose}) {
     return (
-        <PopupWithForm name='card' title='Новое место' buttonText='Создать' isOpen={isOpen}>
+        <PopupWithForm name='card' title='Новое место' buttonText='Создать' isOpen={isOpen} onClose={onClose}>
             <input className="popup__text popup__text_type_title" type="text" id="title" name="title" autoComplete="off"
                 placeholder="Название" minLength="2" maxLength="30" required />
             <span className="popup__text-error" id="title-error"></span>
