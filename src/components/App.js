@@ -5,36 +5,48 @@ import Footer from './Footer';
 import PopupEditProfile from './PopupEditProfile';
 import PopupEditAvatar from './PopupEditAvatar';
 import PopupAddCard from './PopupAddCard';
+import ImagePopup from './ImagePopup';
 
 function App() {
+
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+
   return (
     <div className='page'>
       <div className="page__content">
         <Header />
-        <Main />
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onEditAvatar={handleEditAvatarClick}
+          onAddPlace={handleAddPlaceClick}
+        />
         <Footer />
       </div>
-      <PopupEditProfile />
-      <PopupEditAvatar />
-      <PopupAddCard />
+      <PopupEditProfile
+        isOpen={isEditProfilePopupOpen}
+      />
+      <PopupEditAvatar
+      isOpen={isEditAvatarPopupOpen}
+      />
+      <PopupAddCard
+      isOpen={isAddPlacePopupOpen}
+      />
 
-      <div class="popup popup_type_delete-card">
-        <form class="popup__container" name="card" action="#" noValidate>
-          <button class="popup__btn-close" type="button" aria-label="кнопка закрыть"></button>
-          <h2 class="popup__title popup__title_type_margin">Вы уверены?</h2>
-          <button class="popup__btn-save" type="submit">Да</button>
-        </form>
-      </div>
-
-      <div class="popup popup_view_opaque popup_type_fullscreen">
-        <div class="popup__wrap">
-          <button class="popup__btn-close" type="button" aria-label="кнопка закрыть"></button>
-          <img class="popup__image" src="#" alt="фотография" />
-          <p class="popup__caption"></p>
-        </div>
-      </div>
-
-      <template class="card-template">
+      {/* <template class="card-template">
         <li class="card">
           <button class="card__btn-delete"></button>
           <img class="card__image" src="#" alt="фото" />
@@ -46,7 +58,7 @@ function App() {
             </div>
           </div>
         </li>
-      </template>
+      </template> */}
 
     </div>
   );

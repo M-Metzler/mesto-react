@@ -1,18 +1,18 @@
 import React from 'react';
 import avatarCusto from '../images/Cousteau.jpg';
 
-function Main() {
+function Main({ onEditProfile, onEditAvatar, onAddPlace }) {
   return (
     <main className="content">
       <section className="profile profile_box_position">
         <img className="profile__avatar" src={avatarCusto} alt="Жак-Ив Кусто" />
-        <button className="profile__avatar-edit" onClick={namhandleEditAvatarClicke}></button>
+        <button className="profile__avatar-edit" onClick={onEditAvatar}></button>
         <div className="profile__info">
           <h1 className="profile__name">Жак-Ив Кусто</h1>
-          <button className="profile__button-edit" type="button" onClick={handleEditProfileClick}></button>
+          <button className="profile__button-edit" type="button" onClick={onEditProfile}></button>
           <p className="profile__about-self">Исследователь океана</p>
         </div>
-        <button className="profile__button-add" type="button" aria-label="кнопка добавить карточку" onClick={handleAddPlaceClick}></button>
+        <button className="profile__button-add" type="button" aria-label="кнопка добавить карточку" onClick={onAddPlace}></button>
       </section>
 
       <section className="cards cards_box_position">
@@ -22,17 +22,6 @@ function Main() {
     </main>
   );
 
-  function handleEditProfileClick() {
-    document.querySelector('.popup_type_profile').classList.add('popup_opened');
-  }
-
-  function namhandleEditAvatarClicke() {
-    document.querySelector('.popup_type_avatar').classList.add('popup_opened');
-  }
-
-  function handleAddPlaceClick() {
-    document.querySelector('.popup_type_card').classList.add('popup_opened');
-  }
 }
 
 export default Main;
