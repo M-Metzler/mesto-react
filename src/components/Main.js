@@ -1,3 +1,4 @@
+import React from 'react';
 import avatarCusto from '../images/Cousteau.jpg';
 
 function Main() {
