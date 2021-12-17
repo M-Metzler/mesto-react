@@ -1,19 +1,35 @@
 import React from 'react';
 import api from '../utils/api';
+import Card from './Card';
 
 function Main({ onEditProfile, onEditAvatar, onAddPlace }) {
 
   React.useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setUserName(data.name);
-      setUserDescription(data.about);
-      setUserAvatar(data.avatar)
-    })
+    api.getUserInfo()
+      .then((data) => {
+        setUserName(data.name);
+        setUserDescription(data.about);
+        setUserAvatar(data.avatar)
+      })
+      .catch((err) =>
+        console.log(`Ошибка: ${err}`))
   }, []);
 
+  React.useEffect(() => {
+    api.getInitialCards()
+      .then((cardList) => {
+        setCards(cardList)
+      })
+      .catch((err) =>
+        console.log(`Ошибка: ${err}`))
+  }, []);
+
+
   const [userName, setUserName] = React.useState();
-  const [userDescription , setUserDescription] = React.useState();
+  const [userDescription, setUserDescription] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
+
+  const [cards, setCards] = React.useState([]);
 
   return (
     <main className="content">
@@ -30,6 +46,12 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace }) {
 
       <section className="cards cards_box_position">
         <ul className="cards__items">
+          {cards.map(card => 
+            <Card
+              key={card._id}
+              card={card}
+            />
+          )}
         </ul>
       </section>
     </main>

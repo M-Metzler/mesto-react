@@ -1,6 +1,6 @@
 .footer_box_position {
   margin: auto;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 @media (max-width: 920px) {
@@ -12,6 +12,6 @@
 
 @media (max-width: 460px) {
   .footer_box_position {
-    margin-bottom: 36px;
+    padding-bottom: 36px;
   }
 }
