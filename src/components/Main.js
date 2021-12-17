@@ -2,7 +2,7 @@ import React from 'react';
 import api from '../utils/api';
 import Card from './Card';
 
-function Main({ onEditProfile, onEditAvatar, onAddPlace }) {
+function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -50,6 +50,7 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace }) {
             <Card
               key={card._id}
               card={card}
+              onCardClick={onCardClick}
             />
           )}
         </ul>
