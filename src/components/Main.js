@@ -25,16 +25,16 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
   }, []);
 
 
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
+  const [userName, setUserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
+  const [userAvatar, setUserAvatar] = React.useState('');
 
   const [cards, setCards] = React.useState([]);
 
   return (
     <main className="content">
       <section className="profile profile_box_position">
-        <img className="profile__avatar" src={`${userAvatar}`} alt="Жак-Ив Кусто" />
+        <img className="profile__avatar" src={`${userAvatar}`} alt="Аватар профиля" />
         <button className="profile__avatar-edit" onClick={onEditAvatar}></button>
         <div className="profile__info">
           <h1 className="profile__name">{userName}</h1>
@@ -46,12 +46,12 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
 
       <section className="cards cards_box_position">
         <ul className="cards__items">
-          {cards.map(card =>
+          {cards.map((card) => (
             <Card
               key={card._id}
               card={card}
               onCardClick={onCardClick}
-            />
+            />)
           )}
         </ul>
       </section>
