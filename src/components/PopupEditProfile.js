@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function PopupEditProfile({isOpen, onClose}) {
+function PopupEditProfile({ isOpen, onClose }) {
     return (
         <PopupWithForm name='profile' title='Редактировать профиль' buttonText='Сохранить' isOpen={isOpen} onClose={onClose}>
             <input className="popup__text popup__text_type_name" type="text" id="name" name="name" placeholder="Имя" autoComplete="off"

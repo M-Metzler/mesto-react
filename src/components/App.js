@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -36,6 +37,32 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setSelectedCard(false);
   }
+
+  useEffect(() => {
+    function hadleEscClose(evt) {
+      if (evt.key === "Escape") {
+        closeAllPopups();
+      }
+    }
+    document.addEventListener('keydown', hadleEscClose);
+    return () => {
+      document.removeEventListener('keydown', hadleEscClose);
+    }
+  }, []);
+
+  useEffect(() => {
+    function hadleOverlayClose(evt) {
+      if (evt.target.classList.contains('popup')) {
+        closeAllPopups();
+      }
+    }
+    document.addEventListener('mousedown', hadleOverlayClose);
+    return () => {
+      document.removeEventListener('mousedown', hadleOverlayClose);
+    }
+  }, []);
+
+
 
   return (
     <div className='page'>

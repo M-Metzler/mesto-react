@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function PopupEditAvatar({isOpen, onClose}) {
+function PopupEditAvatar({ isOpen, onClose }) {
     return (
         <PopupWithForm name='avatar' title='Обновить аватар' buttonText='Сохранить' isOpen={isOpen} onClose={onClose}>
             <input className="popup__text popup__text_type_url" type="url" id="avatar" name="avatar" autoComplete="off"

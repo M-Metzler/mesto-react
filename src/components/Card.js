@@ -9,7 +9,7 @@ function Card({ card, onCardClick }) {
     return (
         <li className="card">
             <button className="card__btn-delete"></button>
-            <img className="card__image" src={card.link} alt={card.name} onClick={handleClick}/>
+            <img className="card__image" src={card.link} alt={card.name} onClick={handleClick} />
             <div className="card__info">
                 <h2 className="card__header">{card.name}</h2>
                 <div className="card__container-like">

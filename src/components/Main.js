@@ -46,7 +46,7 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
 
       <section className="cards cards_box_position">
         <ul className="cards__items">
-          {cards.map(card => 
+          {cards.map(card =>
             <Card
               key={card._id}
               card={card}

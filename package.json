@@ -1,6 +1,8 @@
 {
   "name": "mesto-react",
   "version": "0.1.0",
+  "description": "проект Mesto реализованный на React",
+  "author": "Mikhail Metzler",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",

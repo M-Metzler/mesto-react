@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImagePopup({card, onClose}) {
+function ImagePopup({ card, onClose }) {
     return (
         <div className={`popup popup_view_opaque popup_type_fullscreen ${card ? 'popup_opened' : ''}`}>
             <div className="popup__wrap">
