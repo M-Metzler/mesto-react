@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupEditProfile from './PopupEditProfile';
+import EditProfilePopup from './EditProfilePopup';
 import PopupEditAvatar from './PopupEditAvatar';
 import PopupAddCard from './PopupAddCard';
 import ImagePopup from './ImagePopup';
@@ -46,6 +46,15 @@ function App() {
     setSelectedCard({ name: '', link: '' });
   }
 
+  function handleUpdateUser({name, about}) {
+    api.editUserInfo({ name, about })
+      .then((UserInfo ) => {
+        setCurrentUser(UserInfo);
+        closeAllPopups();
+    });
+  }
+
+
   useEffect(() => {
     function hadleEscClose(evt) {
       if (evt.key === "Escape") {
@@ -85,9 +94,10 @@ function App() {
         />
         <Footer />
       </div>
-      <PopupEditProfile
+      <EditProfilePopup
         isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
       />
       <PopupEditAvatar
         isOpen={isEditAvatarPopupOpen}
