@@ -1,19 +1,20 @@
 import React from 'react';
 import api from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
 
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then((data) => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar)
-      })
-      .catch((err) =>
-        console.log(`Ошибка: ${err}`))
-  }, []);
+  // React.useEffect(() => {
+  //   api.getUserInfo()
+  //     .then((data) => {
+  //       setUserName(data.name);
+  //       setUserDescription(data.about);
+  //       setUserAvatar(data.avatar)
+  //     })
+  //     .catch((err) =>
+  //       console.log(`Ошибка: ${err}`))
+  // }, []);
 
   React.useEffect(() => {
     api.getInitialCards()
@@ -25,21 +26,23 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick }) {
   }, []);
 
 
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
+  // const [userName, setUserName] = React.useState('');
+  // const [userDescription, setUserDescription] = React.useState('');
+  // const [userAvatar, setUserAvatar] = React.useState('');
 
   const [cards, setCards] = React.useState([]);
+
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile profile_box_position">
-        <img className="profile__avatar" src={`${userAvatar}`} alt="Аватар профиля" />
+        <img className="profile__avatar" src={currentUser.avatar} alt="Аватар профиля" />
         <button className="profile__avatar-edit" onClick={onEditAvatar}></button>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
+          <h1 className="profile__name">{currentUser.name}</h1>
           <button className="profile__button-edit" type="button" onClick={onEditProfile}></button>
-          <p className="profile__about-self">{userDescription}</p>
+          <p className="profile__about-self">{currentUser.about}</p>
         </div>
         <button className="profile__button-add" type="button" aria-label="кнопка добавить карточку" onClick={onAddPlace}></button>
       </section>
