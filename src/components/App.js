@@ -4,7 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import EditProfilePopup from './EditProfilePopup';
-import PopupEditAvatar from './PopupEditAvatar';
+import EditAvatarPopup from './EditAvatarPopup';
 import PopupAddCard from './PopupAddCard';
 import ImagePopup from './ImagePopup';
 import api from '../utils/api';
@@ -20,7 +20,9 @@ function App() {
 
   React.useEffect(() => {
     api.getUserInfo()
-      .then(data => setCurrentUser(data));
+      .then(data => setCurrentUser(data))
+      .catch((err) =>
+        console.log(`Ошибка: ${err}`))
   }, []);
 
   function handleEditProfileClick() {
@@ -46,12 +48,24 @@ function App() {
     setSelectedCard({ name: '', link: '' });
   }
 
-  function handleUpdateUser({name, about}) {
+  function handleUpdateUser({ name, about }) {
     api.editUserInfo({ name, about })
-      .then((UserInfo ) => {
-        setCurrentUser(UserInfo);
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
-    });
+      })
+      .catch((err) =>
+        console.log(`Ошибка: ${err}`))
+  }
+
+  function handleUpdateAvatar({ avatar }) {
+    api.editUserAvatar({ avatar })
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch((err) =>
+        console.log(`Ошибка: ${err}`))
   }
 
 
@@ -83,36 +97,37 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-    <div className='page'>
-      <div className="page__content">
-        <Header />
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-        />
-        <Footer />
-      </div>
-      <EditProfilePopup
-        isOpen={isEditProfilePopupOpen}
+      <div className='page'>
+        <div className="page__content">
+          <Header />
+          <Main
+            onEditProfile={handleEditProfileClick}
+            onEditAvatar={handleEditAvatarClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+          />
+          <Footer />
+        </div>
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
-      />
-      <PopupEditAvatar
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-      />
-      <PopupAddCard
-        isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopups}
-      />
-      <ImagePopup
-        card={selectedCard}
-        onClose={closeAllPopups}
-      />
+        />
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+        />
+        <PopupAddCard
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+        />
+        <ImagePopup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
       </div>
-      </CurrentUserContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 
