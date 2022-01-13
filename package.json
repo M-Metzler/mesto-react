@@ -4,6 +4,7 @@
   "description": "проект Mesto реализованный на React",
   "author": "Mikhail Metzler",
   "private": true,
+  "homepage": "https://m-metzler.github.io/mesto-react/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -19,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
