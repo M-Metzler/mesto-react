@@ -11,7 +11,8 @@
 
 1. React
 2. Функциональные компоненты
-3. Хуки. React.useState, React.useEffect.
+3. Хуки. React.useState, React.useEffect
+4. React.createContext
 
 
 #### Запуск проекта
