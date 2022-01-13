@@ -33,7 +33,12 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
             <div className="card__info">
                 <h2 className="card__header">{card.name}</h2>
                 <div className="card__container-like">
-                    <button className={cardLikeButtonClassName} type="button" aria-label="кнопка лайк" onClick={handleLikeClick}></button>
+                    <button
+                        className={cardLikeButtonClassName}
+                        type="button"
+                        aria-label="кнопка лайк"
+                        onClick={handleLikeClick}>
+                    </button>
                     <span className="card__counter-like">{card.likes.length}</span>
                 </div>
             </div>

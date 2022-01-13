@@ -19,21 +19,18 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then(data => setCurrentUser(data))
-      .catch((err) =>
-        console.log(`Ошибка: ${err}`))
-  }, []);
+
 
   React.useEffect(() => {
-    api.getInitialCards()
-      .then((cardList) => {
-        setCards(cardList)
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, initialCards]) => {
+        setCurrentUser(userData);
+        setCards(initialCards);
       })
       .catch((err) =>
         console.log(`Ошибка: ${err}`))
   }, []);
+
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);

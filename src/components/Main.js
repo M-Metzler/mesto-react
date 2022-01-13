@@ -1,5 +1,4 @@
 import React from 'react';
-import api from '../utils/api';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -14,10 +13,19 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, onCardClick, cards, onC
         <button className="profile__avatar-edit" onClick={onEditAvatar}></button>
         <div className="profile__info">
           <h1 className="profile__name">{currentUser.name}</h1>
-          <button className="profile__button-edit" type="button" onClick={onEditProfile}></button>
+          <button
+            className="profile__button-edit"
+            type="button"
+            onClick={onEditProfile}>
+          </button>
           <p className="profile__about-self">{currentUser.about}</p>
         </div>
-        <button className="profile__button-add" type="button" aria-label="кнопка добавить карточку" onClick={onAddPlace}></button>
+        <button
+          className="profile__button-add"
+          type="button"
+          aria-label="кнопка добавить карточку"
+          onClick={onAddPlace}>
+        </button>
       </section>
 
       <section className="cards cards_box_position">
